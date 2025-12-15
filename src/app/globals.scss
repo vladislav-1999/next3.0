@@ -1,9 +1,15 @@
-@import 'tailwindcss';
+@use 'tailwindcss';
+
+:root {
+	--sidebar-width: 15rem;
+}
 
 @theme {
 	--color-primary: #ad2528;
 	--color-bg: #191b28;
 	--color-border: #2a3439;
+
+	--spacing-layout: 1.2rem;
 }
 
 * {
@@ -16,5 +22,5 @@
 }
 
 body {
-	@apply text-white bg-bg text-lg antialiased;
+	@apply bg-bg text-base text-white;
 }
