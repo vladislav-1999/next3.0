@@ -1,7 +1,7 @@
 import { Menu, SquarePlay } from 'lucide-react'
 import Link from 'next/link'
 
-import { PUBLIC_PAGE } from '@/src/config/public-page.config'
+import { PAGE } from '@/src/config/public-page.config'
 
 export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) {
 	return (
@@ -13,7 +13,7 @@ export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) 
 				<Menu />
 			</button>
 
-			<Link href={PUBLIC_PAGE.HOME}>
+			<Link href={PAGE.HOME}>
 				<span className='flex items-center gap-1.5'>
 					<SquarePlay
 						size={29}

@@ -12,6 +12,14 @@ class PablicPage {
 
 	SETTINGS = '/settings'
 	FEEDBACK = '/feedback'
+
+	VIDEO(path: string) {
+		return `/v/${path}`
+	}
+
+	CHANNEL(path: string) {
+		return `/c/${path}`
+	}
 }
 
-export const PUBLIC_PAGE = new PablicPage()
+export const PAGE = new PablicPage()
