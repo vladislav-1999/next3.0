@@ -1,11 +1,18 @@
 import { Flame } from 'lucide-react'
+import type { Metadata } from 'next'
 
 import { Explore } from './explore/Explore'
+import { Heading } from '@/src/components/ui/Heading'
 import { VideoItem } from '@/src/components/ui/video-item/VideoItem'
 import { videoService } from '@/src/services/video.service'
 import type { IVideo } from '@/src/types/video.types'
 
 export const revalidate = 100
+
+export const metadata: Metadata = {
+	title: 'NewTube',
+	description: 'Home page'
+}
 
 export default async function Home() {
 	const data = await videoService.getTrendingVideos()
@@ -13,8 +20,8 @@ export default async function Home() {
 
 	return (
 		<section>
-			<section>
-				<h2>Trending</h2>
+			<section className='mb-10'>
+				<Heading Icon={Flame}>Trending</Heading>
 				<div className='grid grid-cols-6 gap-6'>
 					{trendingVideos.length &&
 						trendingVideos.map((video: IVideo) => (
