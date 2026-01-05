@@ -12,6 +12,7 @@ import {
 
 import type { ISudebarItem } from './sidebar.types'
 import { PAGE } from '@/src/config/public-page.config'
+import { STUDIO_PAGE } from '@/src/config/studio-page.config'
 
 export const SIDEBAR_DATA: ISudebarItem[] = [
 	{
@@ -57,7 +58,7 @@ export const MORE_SIDEBAR_DATA: ISudebarItem[] = [
 	{
 		icon: Settings,
 		label: 'Settings',
-		link: PAGE.SETTINGS
+		link: STUDIO_PAGE.SETTINGS
 	},
 	{
 		icon: CircleAlert,

@@ -3,8 +3,6 @@ class PablicPage {
 	TRENDING = '/trending'
 	VIDEO_GAMES = '/video-games'
 
-	SEARCH = '/search'
-
 	MY_CHANNEL = '/my-channel'
 	SUBSCRIPTIONS = '/subscriptions'
 	HISTORY = '/history'
@@ -19,6 +17,10 @@ class PablicPage {
 
 	CHANNEL(path: string) {
 		return `/c/${path}`
+	}
+
+	SEARCH(searchTerm: string) {
+		return `/s?term=${searchTerm}`
 	}
 }
 
