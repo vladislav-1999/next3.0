@@ -25,3 +25,7 @@
 body {
 	@apply bg-bg text-base text-white;
 }
+
+.grid-6-cols {
+	@apply grid grid-cols-6 gap-6;
+}

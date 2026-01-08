@@ -19,7 +19,7 @@ export const Explore = () => {
 	return (
 		<section>
 			<Heading Icon={Compass}>Explore</Heading>
-			<div className='grid grid-cols-6 gap-6'>
+			<div className='grid-6-cols'>
 				{isLoading ? (
 					<SkeletonLoader
 						count={6}
