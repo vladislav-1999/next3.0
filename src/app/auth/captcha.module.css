@@ -1,0 +1,13 @@
+.recaptcha {
+	filter: invert(1) grayscale(1);
+	transform: scale(0.9);
+}
+
+.recaptcha > div {
+	margin-left: -12px;
+}
+
+.recaptcha > div > div {
+	margin-left: auto;
+	margin-right: auto;
+}

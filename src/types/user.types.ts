@@ -1,7 +1,14 @@
+import type { IChannel } from './channel.types'
+import type { IWatchHistory } from './history.types'
+
 export interface IUser {
 	id: string
-	createdAt: string
+	name?: string
 	email: string
-	name: string
-	updatedAt: string
+}
+
+export interface IFullUser extends IUser {
+	channel?: IChannel
+	subscription?: IChannel[]
+	watchHistory?: IWatchHistory[]
 }
