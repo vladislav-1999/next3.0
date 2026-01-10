@@ -2,12 +2,10 @@ import Cookies from 'js-cookie'
 
 import { axiosClassic } from '@/src/api/axios'
 import type { IAuthData } from '@/src/app/auth/auth-form.types'
+import { store } from '@/src/store'
+import { clearAuthData, setAuthData } from '@/src/store/auth.slice'
+import { EnumTokens } from '@/src/types/auth.types'
 import type { IUser } from '@/src/types/user.types'
-
-export enum EnumTokens {
-	'ACCESS_TOKEN' = 'accessToken',
-	'REFRESH_TOKEN' = 'refreshToken'
-}
 
 interface IAuthResponse {
 	user: IUser
@@ -26,6 +24,7 @@ class AuthService {
 
 		if (response.data.accessToken) {
 			this._saveTokenStorage(response.data.accessToken)
+			store.dispatch(setAuthData(response.data))
 		}
 
 		return response
@@ -58,7 +57,10 @@ class AuthService {
 	async logout() {
 		const response = await axiosClassic.post<boolean>(`${this._AUTH}/logout`)
 
-		if (response.data) this._removeFromStorage()
+		if (response.data) {
+			this._removeFromStorage()
+			store.dispatch(clearAuthData())
+		}
 
 		return response
 	}
