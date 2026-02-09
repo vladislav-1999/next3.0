@@ -13,7 +13,6 @@ import { Button } from '@/src/components/ui/button/Button'
 import { Field } from '@/src/components/ui/field/Field'
 import { Logo } from '@/src/components/ui/logo/Logo'
 import { PAGE } from '@/src/config/public-page.config'
-import { type TRootState } from '@/src/store'
 import { useTypedSelector } from '@/src/store'
 
 export function Auth() {
