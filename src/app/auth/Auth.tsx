@@ -1,5 +1,6 @@
 'use client'
 
+import { Eye, EyeOff } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -17,6 +18,8 @@ import { useTypedSelector } from '@/src/store'
 
 export function Auth() {
 	const [isLogin, setIsLogin] = useState(true)
+	const [isPassVisible, setIsPassVisible] = useState(false)
+
 	const {
 		register,
 		handleSubmit,
@@ -44,6 +47,10 @@ export function Auth() {
 		if (!accessToken) return
 		router.push(PAGE.HOME)
 	}, [accessToken, router])
+
+	const togglePassVisible = () => {
+		setIsPassVisible(prev => !prev)
+	}
 
 	return (
 		<div className='flex h-screen w-screen items-center justify-center'>
@@ -87,14 +94,14 @@ export function Auth() {
 							></Field>
 							<Field
 								label='Password'
-								type='password'
+								type={isPassVisible ? '' : 'password'}
 								registration={register('password', { required: 'Password is required' })}
 								error={errors.password?.message}
 							></Field>
 							{!isLogin && (
 								<Field
 									label='Password Confirm'
-									type='password'
+									type={isPassVisible ? '' : 'password'}
 									registration={register('confirmPassword', {
 										required: 'Password needs confirm',
 										validate: value => value === watch('password') || 'Passwords do not match'
@@ -102,6 +109,19 @@ export function Auth() {
 									error={errors.confirmPassword?.message}
 								></Field>
 							)}
+							<div className='mb-3'>
+								{isPassVisible ? (
+									<Eye
+										onClick={() => togglePassVisible()}
+										className='cursor-pointer'
+									/>
+								) : (
+									<EyeOff
+										onClick={() => togglePassVisible()}
+										className='cursor-pointer'
+									/>
+								)}
+							</div>
 
 							<ReCAPTCHA
 								ref={recaptchaRef}

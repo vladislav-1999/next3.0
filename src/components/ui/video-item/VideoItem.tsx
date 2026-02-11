@@ -13,6 +13,8 @@ interface Props {
 }
 
 export function VideoItem({ video, Icon }: Props) {
+	console.log(video.channel.name)
+
 	return (
 		<div>
 			<div className='relative mb-1.5'>
@@ -30,7 +32,8 @@ export function VideoItem({ video, Icon }: Props) {
 						src={video.channel.avatarUrl}
 						width={35}
 						height={35}
-						alt={video.channel.name}
+						// alt={video.channel.name}
+						alt='123'
 						className='absolute bottom-2 left-2 rounded-full shadow'
 					/>
 				</Link>
