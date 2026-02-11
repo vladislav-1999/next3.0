@@ -5,7 +5,7 @@ import { SearchField } from './SearchField'
 import { SkeletonLoader } from '@/src/components/ui/SkeletonLoader'
 
 const DynamicHeaderProfile = dynamic(
-	() => import('./HeaderProfile').then(mod => mod.HeaderProfile),
+	() => import('./profile/HeaderProfile').then(mod => mod.HeaderProfile),
 	{
 		ssr: false,
 		loading: () => (

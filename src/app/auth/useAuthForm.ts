@@ -12,8 +12,6 @@ import type { IAuthData } from './auth-form.types'
 import { type IAuthForm } from './auth-form.types'
 import { PAGE } from '@/src/config/public-page.config'
 import { authService } from '@/src/services/auth.service'
-import { useAppDispatch } from '@/src/store'
-import { clearAuthData } from '@/src/store/auth.slice'
 
 export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAuthForm>) {
 	const router = useRouter()
@@ -26,8 +24,6 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 		mutationKey: [type],
 		mutationFn: (data: IAuthData) => authService.main(type, data, recaptchaRef.current?.getValue())
 	})
-
-	const dispatch = useAppDispatch()
 
 	const onSubmit: SubmitHandler<IAuthForm> = data => {
 		const token = recaptchaRef.current?.getValue()
@@ -50,7 +46,6 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 			},
 			error: e => {
 				if (axios.isAxiosError(e)) {
-					dispatch(clearAuthData())
 					return e.response?.data?.message
 				}
 			}
